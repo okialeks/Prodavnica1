@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+h1{
+	color: #66ff33;
+}
+
+.box{
+	border: 2px solid blue;
+	background-color: #f2f2f2;
+	margin-top: 20px;
+	margin-left: 20px;
+	width: 200px;
+	height: 50px;
+	text-align: center;
+	padding: 30px;
+	border-radius: 20px;
+}
+
+.box input {
+	width:120px;
+	height:20px;
+	color: white;
+	background-color: black;
+	border: 1px solid gray;
+	border-radius: 20px;
+}
+
+.box input:hover{
+	background-color:blue;
+}
+.box input:focus{
+	width:150px;
+}

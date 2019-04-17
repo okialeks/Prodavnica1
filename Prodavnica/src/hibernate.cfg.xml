@@ -29,6 +29,8 @@
 
 <!-- Names the annotated entity class -->
 <mapping class="model.User"/>
+<mapping class="model.Product"/>
+<mapping class="model.Bill"/>
 
 </session-factory>
 </hibernate-configuration>
