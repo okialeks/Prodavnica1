@@ -7,14 +7,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 @Entity
 public class Bill {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idBill;
-	private User user;
-	private List<Product> listOfProducts = new ArrayList<Product>();
 	private double totalPrice;
+	@OneToOne
+	private User user;
+	@OneToMany
+	private List<Product> listOfProducts = new ArrayList<Product>();
+	
 	
 	public User getUser() {
 		return user;
