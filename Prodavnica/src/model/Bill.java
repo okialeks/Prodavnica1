@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Bill {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idBill;
 	private double totalPrice;
 	@OneToOne
