@@ -49,6 +49,49 @@ public class LoginMetode {
 		
 	}
 	
+	public boolean daLiJeDobarPass(String userName, String password) {
+		
+		List<String>passwordi = null;
+		String passwordIzBaze = null;
+		
+		Session sesija = sf.openSession();
+		sesija.beginTransaction();
+			try {
+				String hql = "SELECT password FROM User WHERE userName = :ime";
+				Query query = sesija.createQuery(hql);
+				query.setParameter("ime", userName);
+					passwordi = query.getResultList(); // preuzimam rezultate iz baze
+						if(!(passwordi.isEmpty())) { 
+							passwordIzBaze = passwordi.get(0); // preuzimam password iz liste
+								if(passwordIzBaze.equals(password)) {
+									sesija.getTransaction().commit();
+									System.out.println("pass ok");
+									return true;
+								}else {
+									sesija.getTransaction().commit();
+									System.out.println("pass nije ok");
+									return false;
+								}
+						}else {
+							sesija.getTransaction().commit();
+							System.out.println("parzna je lista!");
+							return false;
+						}	
+			} catch (Exception e) {
+				sesija.getTransaction().rollback();
+				return false;
+			}finally {
+				sesija.close();
+			}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 
