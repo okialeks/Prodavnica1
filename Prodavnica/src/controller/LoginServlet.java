@@ -6,8 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Admin;
+import model.User;
 import service.LoginMetode;
 
 /**
@@ -38,6 +40,9 @@ public class LoginServlet extends HttpServlet {
 		
 		if(login.daLiPostojiUser(userName)) {
 			if(login.daLiJeDobarPass(userName, password)) {
+				User user = login.vratiUsera(userName, password);
+				HttpSession a = request.getSession();
+					a.setAttribute("valter", user);
 				if(userName.equals(admin.getAdminUserName()) && password.equals(admin.getAdminPassword())) {
 					response.sendRedirect("jsp/admin.jsp");
 				}else {
