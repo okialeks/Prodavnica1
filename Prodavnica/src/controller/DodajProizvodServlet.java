@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.AdminMetode;
+
 /**
  * Servlet implementation class DodajProizvodServlet
  */
@@ -24,6 +26,15 @@ public class DodajProizvodServlet extends HttpServlet {
 		String stock = request.getParameter("stock");
 		String discount = request.getParameter("discount");
 		
+		AdminMetode am = new AdminMetode();
+		
+		boolean b = am.ubaciProizvodUBazu(productName, price, stock, discount);
+		
+		if(b) {
+			response.sendRedirect("jsp/admin.jsp");
+		}else {
+			response.sendRedirect("jsp/adminError.jsp");
+		}
 		
 	}
 

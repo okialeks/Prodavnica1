@@ -13,7 +13,7 @@ public class AdminMetode {
 			.configure()
 			.buildSessionFactory();
 	
-public boolean ubaciProizvodaUBazu(String productName, String price, String stock, String discount) {
+public boolean ubaciProizvodUBazu(String productName, String price, String stock, String discount) {
 		
 		Product product = new Product();
 			product.setProductName(productName);
